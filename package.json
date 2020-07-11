@@ -7,5 +7,9 @@
   "license": "MIT",
   "scripts": {
     "test": "./node_modules/.bin/mocha **/*.spec.js"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1"
   }
 }
