@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/eliam-luke/aws-study.git",
   "author": "woshizhuyang <eliam.luke@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha **/*.spec.js"
+  }
 }
