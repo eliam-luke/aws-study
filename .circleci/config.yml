@@ -11,10 +11,10 @@ jobs:
           steps:
             - run:
                 name: Install dependencies
-                command: npm install
+                command: yarn install
             - run:
                 name: Run tests with coverage
-                command: npm test --coverage
+                command: yarn test --coverage
 workflows:
     build-and-test:
       jobs:
