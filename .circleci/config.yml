@@ -13,10 +13,7 @@ jobs:
                 name: Install dependencies
                 command: yarn install
             - run:
-                name: Run tests-1 with coverage
-                command: yarn test --coverage
-            - run:
-                name: Run tests-2 with coverage
+                name: Run unit tests with coverage
                 command: yarn unitTest --coverage
 workflows:
     build-and-test:

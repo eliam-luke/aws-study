@@ -6,8 +6,7 @@
   "author": "woshizhuyang <eliam.luke@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "./node_modules/.bin/mocha **/*.spec.js",
-    "unitTest": "./node_modules/.bin/mocha **/*.test.js"
+    "unitTest": "./node_modules/.bin/mocha **/*.spec.js"
   },
   "devDependencies": {
     "chai": "^4.2.0",
