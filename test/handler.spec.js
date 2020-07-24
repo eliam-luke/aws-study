@@ -2,7 +2,7 @@ const mocha = require('mocha');
 const chai = require('chai');
 const should = chai.should();
 
-const handler = require('./handler');
+const handler = require('../handler');
 
 // 「矢印関数:()=>（別名「ラムダ」）をMochaに渡すことは推奨されないため、使用される通常の関数:function()
 // 理由は下記の通り。
