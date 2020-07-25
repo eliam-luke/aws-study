@@ -1,7 +1,7 @@
 {
   "name": "aws-study",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./adaptor/handler.js",
   "repository": "https://github.com/eliam-luke/aws-study.git",
   "author": "woshizhuyang <eliam.luke@gmail.com>",
   "license": "MIT",
