@@ -6,7 +6,7 @@ const VError = require('verror'); // エラー処理ライブラリ
 const AWS = require('aws-sdk'); // AWS-SDKライブラリ
 const documentClient = new AWS.DynamoDB.DocumentClient(); // dynamoDb操作モジュール
 
-const TokenInfoRepository = require('../../domain/models/tokenInfoRepository')
+const TokenInfoRepository = require('../../domain/models/token/tokenInfoRepository')
 
 class DynamoDbTokenInfoRepository extends TokenInfoRepository {
     // DB接続インスタンス

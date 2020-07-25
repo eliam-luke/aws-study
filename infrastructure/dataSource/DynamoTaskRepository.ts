@@ -1,19 +1,19 @@
-import { Task } from '../../domain/model/task/Task'
-import { AbstractTaskRepository } from "../../domain/model/task/AbstractTaskRepository";
+import { Task } from '../../domain/models/task/Task'
+import { AbstractTaskRepository } from "../../domain/models/task/AbstractTaskRepository";
 import * as AWS from 'aws-sdk';
 import { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
 
 let options = {};
 
 // connect to local DB if running offline
-//if (process.env.IS_OFFLINE) {
-options = {
-  region: "localhost",
-  accessKeyId: "AKIAJWF6HLJEBILIAOCQ",
-  secretAccessKey: "AKIAJWF6HLJEBILIAOCQ",
-  endpoint: "http://localhost:8000"
-};
-//}
+if (process.env.IS_OFFLINE === '1') {
+  options = {
+    region: "localhost",
+    accessKeyId: "accessKeyId",
+    secretAccessKey: "secretAccessKey",
+    endpoint: "http://localhost:8000"
+  };
+}
 
 const TABLE_NAME = process.env.TASK_TABLE_NAME;
 

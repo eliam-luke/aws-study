@@ -1,10 +1,9 @@
 'use strict';
 
-const mocha = require('mocha');
-const chai = require('chai');
-const should = chai.should();
+//import * as mocha from 'mocha';
+import { expect } from 'chai';
 
-const handler = require('../adaptor/handler');
+import * as createTaskHandler from '../adaptor/createTaskHandler';
 
 // 「矢印関数:()=>（別名「ラムダ」）をMochaに渡すことは推奨されないため、使用される通常の関数:function()
 // 理由は下記の通り。
@@ -13,11 +12,11 @@ const handler = require('../adaptor/handler');
 // しかし、Mochaはこれらの関数を、this Mochaに役立つ関数を含むオブジェクトで呼び出します。
 // 矢印関数はthisオブジェクトの設定を回避するため、Mochaは機能しなくなります。
 // Mochaはと ブロックに通常の関数を必要 describe とし itますが、これらの関数内で矢印関数を使用できます。
-describe("The handler function", function()  {
-    it("returns a message", function() {
-        handler.hello(undefined, undefined, function(error, response){
+describe('The createTaskHandler function', function()  {
+    it('returns detail=ok', function() {
+        createTaskHandler.handler(undefined, undefined, function(response){
             let body = JSON.parse(response.body);
-            body.message.should.be.equal('Go Serverless v1.0! Your function executed successfully!');
+            expect(body.detail).should.be.equal('ok');
         });
     });
 });

@@ -1,5 +1,5 @@
-import { Task } from '../../domain/model/task/Task'
-import { ITaskRepository } from '../../domain/model/task/ITaskRepository'
+import { Task } from '../../domain/models/task/Task'
+import { ITaskRepository } from '../../domain/models/task/ITaskRepository'
 
 export class ListTasks {
   private taskRepository: ITaskRepository
