@@ -1,9 +1,10 @@
 'use strict';
 
 //import * as mocha from 'mocha';
-import { expect } from 'chai';
 
 import * as helloHandler from '../adaptor/helloHandler';
+
+import { expect } from 'chai';
 
 // 「矢印関数:()=>（別名「ラムダ」）をMochaに渡すことは推奨されないため、使用される通常の関数:function()
 // 理由は下記の通り。
@@ -15,6 +16,7 @@ import * as helloHandler from '../adaptor/helloHandler';
 describe("The handler function", function()  {
     it("returns a message", function() {
         helloHandler.handler(undefined, undefined, function(response){
+            console.log(`response.body=${response.body}`);
             let body = JSON.parse(response.body);
             expect(body.message).should.be.equal('Go Serverless Typescript v1.0! Your function executed successfully!');
         });

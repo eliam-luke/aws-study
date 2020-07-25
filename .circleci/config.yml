@@ -14,7 +14,7 @@ jobs:
                 command: yarn install
             - run:
                 name: Run unit tests with coverage
-                command: yarn unitTest --coverage
+                command: yarn unitTestJs --coverage
 workflows:
     build-and-test:
       jobs:

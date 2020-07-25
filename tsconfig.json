@@ -6,9 +6,9 @@
     "noUnusedParameters": true,
     "sourceMap": true,
     "target": "es2017",
-    "outDir": "lib",
+    "outDir": "dist",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "experimentalDecorators": true
   },
   "exclude": ["node_modules"]
 }

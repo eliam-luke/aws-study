@@ -6,12 +6,12 @@
 
 module.exports = {
   diff: true,
-  extension: ['js'],
+  extension: ['js', 'ts'],
   package: './package.json',
   reporter: 'spec',
   slow: 75,
   timeout: 2000,
   ui: 'bdd',
-  'watch-files': ['test/**/*.spec.js'],
+  'watch-files': ['test/**/*.spec.js', 'test/**/*.spec.ts'],
   'watch-ignore': ['lib/**/*.js', 'apl-common/**/*.js']
 };
