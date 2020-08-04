@@ -2,7 +2,7 @@
 
 //import * as mocha from 'mocha';
 
-import * as createTaskHandler from '../adaptor/createTaskHandler';
+import * as createTaskHandler from '../apl/adaptor/createTaskHandler';
 
 import { expect } from 'chai';
 

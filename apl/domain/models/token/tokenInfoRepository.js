@@ -1,10 +1,9 @@
 'use strict';
 
 class TokenInfoRepository{
-    // DB接続インスタンス
-    connection;
     // コンストラクター
     constructor(connection) {    
+        // DB接続インスタンス
         this.connection = connection;
     }
 

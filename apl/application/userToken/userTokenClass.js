@@ -24,4 +24,4 @@ class UserToken {
     }
 }
 
-module.exports = UserId;
+module.exports = UserToken;

@@ -2,7 +2,7 @@
 
 //import * as mocha from 'mocha';
 
-import * as helloHandler from '../adaptor/helloHandler';
+import * as helloHandler from '../apl/adaptor/helloHandler';
 
 import { expect } from 'chai';
 

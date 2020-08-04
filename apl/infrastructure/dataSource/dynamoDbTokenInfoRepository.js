@@ -6,13 +6,13 @@ const VError = require('verror'); // エラー処理ライブラリ
 const AWS = require('aws-sdk'); // AWS-SDKライブラリ
 const documentClient = new AWS.DynamoDB.DocumentClient(); // dynamoDb操作モジュール
 
-const TokenInfoRepository = require('../../domain/models/token/tokenInfoRepository')
+const TokenInfoRepository = require('../../domain/models/token/tokenInfoRepository');
 
 class DynamoDbTokenInfoRepository extends TokenInfoRepository {
-    // DB接続インスタンス
-    documentClient;
     // コンストラクター
-    constructor(documentClient) {    
+    constructor(documentClient) {
+        super();
+        // DB接続インスタンス
         this.documentClient = documentClient;
     }
 
@@ -26,11 +26,11 @@ class DynamoDbTokenInfoRepository extends TokenInfoRepository {
         try {
             // データベースに書込み
             const result =  await documentClient.put(tokenInfo).promise();
+            return result;
         } catch (error) {
             // エラー起こす
-            throw new VError(error, `dynamoDb.put error: ${params.TableName}`);
+            throw new VError(error, `dynamoDb.put error: ${tokenInfo.TableName}`);
         }
-        return result;
     }
 
     update(){

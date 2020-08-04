@@ -13,8 +13,11 @@ jobs:
                 name: Install dependencies
                 command: yarn install
             - run:
+                name: Run static code analysis
+                command: yarn staticAnalysis:Js
+            - run:
                 name: Run unit tests with coverage
-                command: yarn unitTestJs --coverage
+                command: yarn unitTest:Js --coverage
 workflows:
     build-and-test:
       jobs:
