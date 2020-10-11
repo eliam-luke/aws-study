@@ -9,23 +9,23 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
-            - restore_cache:
-                keys: 
-                  - aws-study-{{ .Branch }}-{{ checksum "yarn.lock" }}
-                  - aws-study-{{ .Branch }}-
-                  - aws-study-master
-                  - aws-study-
+            # - restore_cache:
+            #     keys: 
+            #       - aws-study-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            #       - aws-study-{{ .Branch }}-
+            #       - aws-study-master
+            #       - aws-study-
             - run:
                 name: Install serverless
                 command: sudo npm install -g serverless
             - run:
                 name: Install dependencies
                 command: yarn install
-            - save_cache:
-                name: Save Yarn Package Cache
-                key: aws-study-{{ .Branch }}-{{ checksum "yarn.lock" }}
-                paths:
-                  - node_modules/
+            # - save_cache:
+            #     name: Save Yarn Package Cache
+            #     key: aws-study-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            #     paths:
+            #       - node_modules/
             - run:
                 name: Run static code analysis
                 command: yarn staticAnalysis:Js
@@ -36,14 +36,14 @@ jobs:
                 name: Run api start serverless offline
                 background: true
                 command: |
-                  yarn apiStart:local
+                  yarn e2eStart:local
                   touch .offline-started
             - run:
-                name: Sleep 15sec
+                name: Wating for serverless offline started 
                 command: sleep 15
             - run:
-                name: Run api test serverless offline
-                command: yarn apiTest:local
+                name: Run e2e test serverless offline
+                command: yarn e2eTest:local
 workflows:
     build-and-test:
       jobs:
