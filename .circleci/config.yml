@@ -23,6 +23,7 @@ jobs:
                 command: yarn unitTest:Js --coverage
             - run:
                 name: Run api start serverless offline
+                background: true
                 command: yarn apiStart:local
             - run:
                 name: Run api test serverless offline
