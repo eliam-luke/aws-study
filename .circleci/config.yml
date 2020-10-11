@@ -11,14 +11,21 @@ jobs:
           steps:
             - restore_cache:
                 keys: 
-                  - v1-{{ .Branch }}-{{ checksum "package.json" }}
-                  - v1-{{ .Branch }}-
+                  - aws-study-{{ .Branch }}-{{ checksum "yarn.lock" }}
+                  - aws-study-{{ .Branch }}-
+                  - aws-study-master
+                  - aws-study-
             - run:
                 name: Install serverless
                 command: sudo npm install -g serverless
             - run:
                 name: Install dependencies
                 command: yarn install
+            - save_cache:
+                name: Save Yarn Package Cache
+                key: aws-study-{{ .Branch }}-{{ checksum "yarn.lock" }}
+                paths:
+                  - node_modules/
             - run:
                 name: Run static code analysis
                 command: yarn staticAnalysis:Js
@@ -32,10 +39,11 @@ jobs:
                   yarn apiStart:local
                   touch .offline-started
             - run:
+                name: Sleep 15sec
+                command: sleep 15
+            - run:
                 name: Run api test serverless offline
-                command: |
-                  "[ -f .offline-started ]"
-                  yarn apiTest:local
+                command: yarn apiTest:local
 workflows:
     build-and-test:
       jobs:
