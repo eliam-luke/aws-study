@@ -9,6 +9,8 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
+            - restore_cache:
+                key: node-deps-v1-circleci-project-setup-
             - run:
                 name: Install serverless
                 command: sudo npm install -g serverless
