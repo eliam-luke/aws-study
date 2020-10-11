@@ -10,6 +10,9 @@ jobs:
       - node/with-cache:
           steps:
             - run:
+                name: Install serverless
+                command: npm install -g serverless
+            - run:
                 name: Install dependencies
                 command: yarn install
             - run:
@@ -18,6 +21,12 @@ jobs:
             - run:
                 name: Run unit tests with coverage
                 command: yarn unitTest:Js --coverage
+            - run:
+                name: Run api start serverless offline
+                command: yarn apiStart:local
+            - run:
+                name: Run api test serverless offline
+                command: yarn apiTest:local
 workflows:
     build-and-test:
       jobs:

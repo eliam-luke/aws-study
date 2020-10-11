@@ -15,11 +15,14 @@ service: hello-world # NOTE: update this with your service name
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
-# frameworkVersion: "=X.X.X"
+frameworkVersion: ">=1.7.7"
+
+plugins:
+  - serverless-offline
 
 provider:
   name: aws
-  runtime: nodejs10.x
+  runtime: nodejs12.x
 
 # you can overwrite defaults here
   stage: dev
@@ -55,20 +58,26 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: adaptor/helloHandler.handler
+  hello-js:
+    handler: apl/adaptor/handler.hello
     events:
       - http:
           method: get
-          path: /api/v1/hello
+          path: /api/v1/hello-js
+  hello-ts:
+    handler: apl/adaptor/helloHandler.handler
+    events:
+      - http:
+          method: get
+          path: /api/v1/hello-ts
   createTask:
-    handler: adaptor/controller/createTaskHandler.handler
+    handler: apl/adaptor/controller/createTaskHandler.handler
     events:
       - http:
           method: post
           path: /api/v1/create-task
   findTask:
-    handler: adaptor/controller/findTaskHandler.handler
+    handler: apl/adaptor/controller/findTaskHandler.handler
     events:
       - http:
           method: get

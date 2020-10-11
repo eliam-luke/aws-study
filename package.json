@@ -8,7 +8,9 @@
   "scripts": {
     "staticAnalysis:Js": "npx eslint apl/**/*.js",
     "unitTest:Js": "npx mocha 'test/**/*.spec.js' --reporter tap",
-    "unitTest:Ts": "npx mocha -r ts-node/register 'test/**/*.ts' --reporter tap"
+    "unitTest:Ts": "npx mocha -r ts-node/register 'test/**/*.ts' --reporter tap",
+    "apiStart:local": "serveless offline",
+    "apiTest:local": "curl http://localhost:3000/dev/api/v1/hello-js"
   },
   "devDependencies": {
     "@types/chai": "^4.2.12",
@@ -19,6 +21,7 @@
     "chai": "^4.2.0",
     "eslint": "^7.6.0",
     "mocha": "^8.0.1",
+    "serverless-offline": "^6.8.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   },

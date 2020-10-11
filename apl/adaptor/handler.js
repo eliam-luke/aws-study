@@ -6,9 +6,7 @@ module.exports.hello = async (event, context) => {
   const userId = new UserIdClass(new Date().getTime(), null);
   const uuid = userId.uuidV1();
   console.log(`uuidV1=${uuid}`);
-  const i = 0;
-  i = 2;
-  console.log(`i=${i}`);
+
   return {
     statusCode: 200,
     body: JSON.stringify({
