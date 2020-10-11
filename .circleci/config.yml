@@ -10,7 +10,9 @@ jobs:
       - node/with-cache:
           steps:
             - restore_cache:
-                key: node-deps-v1-circleci-project-setup-
+                keys: 
+                  - v1-{{ .Branch }}-{{ checksum "package.json" }}
+                  - v1-{{ .Branch }}-
             - run:
                 name: Install serverless
                 command: sudo npm install -g serverless
@@ -26,10 +28,14 @@ jobs:
             - run:
                 name: Run api start serverless offline
                 background: true
-                command: yarn apiStart:local
+                command: |
+                  yarn apiStart:local
+                  touch .offline-started
             - run:
                 name: Run api test serverless offline
-                command: yarn apiTest:local
+                command: |
+                  "[ -f .offline-started ]"
+                  yarn apiTest:local
 workflows:
     build-and-test:
       jobs:
