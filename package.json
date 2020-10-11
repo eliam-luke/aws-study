@@ -1,8 +1,37 @@
 {
   "name": "aws-study",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "../apl/adaptor/handler.js",
   "repository": "https://github.com/eliam-luke/aws-study.git",
   "author": "woshizhuyang <eliam.luke@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "staticAnalysis:Js": "npx eslint apl/**/*.js",
+    "unitTest:Js": "npx mocha 'test/**/*.spec.js' --reporter tap",
+    "unitTest:Ts": "npx mocha -r ts-node/register 'test/**/*.ts' --reporter tap",
+    "apiStart:local": "serveless offline",
+    "apiTest:local": "curl http://localhost:3000/dev/api/v1/hello-js"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^14.0.26",
+    "@typescript-eslint/eslint-plugin": "^3.7.1",
+    "@typescript-eslint/parser": "^3.7.1",
+    "chai": "^4.2.0",
+    "eslint": "^7.6.0",
+    "mocha": "^8.0.1",
+    "serverless-offline": "^6.8.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "aws-lambda": "^1.0.6",
+    "aws-sdk": "^2.720.0",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
+    "typescript-json-serializer": "^2.3.2",
+    "underscore.string": "^3.3.5",
+    "uuid": "^8.2.0"
+  }
 }

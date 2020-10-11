@@ -1,0 +1,33 @@
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
+jobs:
+  build-and-test:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run:
+                name: Install serverless
+                command: npm install -g serverless
+            - run:
+                name: Install dependencies
+                command: yarn install
+            - run:
+                name: Run static code analysis
+                command: yarn staticAnalysis:Js
+            - run:
+                name: Run unit tests with coverage
+                command: yarn unitTest:Js --coverage
+            - run:
+                name: Run api start serverless offline
+                command: yarn apiStart:local
+            - run:
+                name: Run api test serverless offline
+                command: yarn apiTest:local
+workflows:
+    build-and-test:
+      jobs:
+        - build-and-test

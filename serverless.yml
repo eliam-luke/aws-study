@@ -15,15 +15,18 @@ service: hello-world # NOTE: update this with your service name
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
-# frameworkVersion: "=X.X.X"
+frameworkVersion: ">=1.7.7"
+
+plugins:
+  - serverless-offline
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs12.x
 
 # you can overwrite defaults here
   stage: dev
-  region: us-east-2
+  region: ap-northeast-1
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -42,8 +45,8 @@ provider:
 #            - "/*"
 
 # you can define service wide environment variables here
-#  environment:
-#    variable1: value1
+  environment:
+    TASK_TABLE_NAME: TaskTable-${self:provider.stage}
 
 # you can add packaging information here
 #package:
@@ -55,9 +58,30 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
-
+  hello-js:
+    handler: apl/adaptor/handler.hello
+    events:
+      - http:
+          method: get
+          path: /api/v1/hello-js
+  hello-ts:
+    handler: apl/adaptor/helloHandler.handler
+    events:
+      - http:
+          method: get
+          path: /api/v1/hello-ts
+  createTask:
+    handler: apl/adaptor/controller/createTaskHandler.handler
+    events:
+      - http:
+          method: post
+          path: /api/v1/create-task
+  findTask:
+    handler: apl/adaptor/controller/findTaskHandler.handler
+    events:
+      - http:
+          method: get
+          path: /api/v1/find-task/{id}
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
