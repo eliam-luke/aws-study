@@ -9,7 +9,7 @@
     "staticAnalysis:Js": "npx eslint apl/**/*.js",
     "unitTest:Js": "npx mocha 'test/**/*.spec.js' --reporter tap",
     "unitTest:Ts": "npx mocha -r ts-node/register 'test/**/*.ts' --reporter tap",
-    "apiStart:local": "serveless offline",
+    "apiStart:local": "serverless offline",
     "apiTest:local": "curl http://localhost:3000/dev/api/v1/hello-js"
   },
   "devDependencies": {
