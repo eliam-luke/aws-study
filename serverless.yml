@@ -18,6 +18,7 @@ service: hello-world # NOTE: update this with your service name
 frameworkVersion: ">=1.7.7"
 
 plugins:
+  - serverless-plugin-typescript
   - serverless-offline
 
 provider:
@@ -71,13 +72,13 @@ functions:
           method: get
           path: /api/v1/hello-ts
   createTask:
-    handler: apl/adaptor/controller/createTaskHandler.handler
+    handler: apl/adaptor/createTaskHandler.handler
     events:
       - http:
           method: post
           path: /api/v1/create-task
   findTask:
-    handler: apl/adaptor/controller/findTaskHandler.handler
+    handler: apl/adaptor/findTaskHandler.handler
     events:
       - http:
           method: get

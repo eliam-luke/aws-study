@@ -3,14 +3,14 @@ import { DynamoTaskRepository } from '../../infrastructure/dataSource/DynamoTask
 import { FindTask } from '../../application/service/FindTask'
 
 export const handler: APIGatewayProxyHandler = async (event, _context) => {
-  
+
     const taskRepository = new DynamoTaskRepository();
 
-    const id = parseInt(event.pathParameters["id"], 10);
+    const id = parseInt(event.pathParameters.id, 10);
 
     const findTask = new FindTask(taskRepository);
 
-    let result = await findTask.execute(id)
+    const result = await findTask.execute(id)
 
     return {
         statusCode: 200,

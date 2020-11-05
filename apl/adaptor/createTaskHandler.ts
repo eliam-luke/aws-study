@@ -27,16 +27,16 @@ export const handler: APIGatewayProxyHandler = async (event, _context) => {
                 detail: error.message
             })
         };
-    }  
+    }
 }
 
 function genTaskId () {
-    var len = 8;
-    var str = "123456789";
-    var strLen = str.length;
-    var result = "";
-    
-    for (var i = 0; i < len; i++) {
+    let len = 8;
+    let str = "123456789";
+    let strLen = str.length;
+    let result = "";
+
+    for (let i = 0; i < len; i++) {
         result += str[Math.floor(Math.random() * strLen)];
     }
     return result;

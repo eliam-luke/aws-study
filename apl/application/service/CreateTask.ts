@@ -9,7 +9,7 @@ export class CreateTask {
   }
 
   execute(id: number, title: string, description: string) {
-    let task = new Task(id, title, description)
+    const task = new Task(id, title, description)
     return this.taskRepository.create(task)
   }
 }

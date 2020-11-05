@@ -1,6 +1,6 @@
 'use strict';
 
-//import * as mocha from 'mocha';
+// import * as mocha from 'mocha';
 
 import * as createTaskHandler from '../apl/adaptor/createTaskHandler';
 
@@ -17,7 +17,7 @@ describe('The createTaskHandler function', function()  {
     it('returns detail=ok', function() {
         createTaskHandler.handler(undefined, undefined, function(response){
             console.log(`response.body=${response.body}`);
-            let body = JSON.parse(response.body);
+            const body = JSON.parse(response.body);
             expect(body.detail).should.be.equal('ok');
         });
     });

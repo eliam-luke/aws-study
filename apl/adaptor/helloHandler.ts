@@ -7,7 +7,7 @@ export const handler: APIGatewayProxyHandler = async (event, _context) => {
     statusCode: 200,
     body: JSON.stringify({
       message: 'Go Serverless Typescript v1.0! Your function executed successfully!',
-      timestamp: prune(moment().format(), 12),
+      timestamp: prune(moment().format(), 32),
       input: event,
     }, null, 2),
   };

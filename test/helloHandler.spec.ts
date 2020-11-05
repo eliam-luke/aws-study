@@ -1,6 +1,6 @@
 'use strict';
 
-//import * as mocha from 'mocha';
+// import * as mocha from 'mocha';
 
 import * as helloHandler from '../apl/adaptor/helloHandler';
 
@@ -17,7 +17,7 @@ describe("The handler function", function()  {
     it("returns a message", function() {
         helloHandler.handler(undefined, undefined, function(response){
             console.log(`response.body=${response.body}`);
-            let body = JSON.parse(response.body);
+            const body = JSON.parse(response.body);
             expect(body.message).should.be.equal('Go Serverless Typescript v1.0! Your function executed successfully!');
         });
     });

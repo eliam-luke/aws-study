@@ -28,22 +28,23 @@ jobs:
             #       - node_modules/
             - run:
                 name: Run static code analysis
-                command: yarn staticAnalysis:Js
+                command: yarn staticAnalysis:js
             - run:
                 name: Run unit tests with coverage
-                command: yarn unitTest:Js --coverage
+                command: yarn unitTest:js --coverage
             - run:
-                name: Run api start serverless offline
+                name: Run e2e start serverless offline
                 background: true
-                command: |
-                  yarn e2eStart:local
-                  touch .offline-started
+                command: yarn e2eStart:local
             - run:
                 name: Wating for serverless offline started 
                 command: sleep 15
             - run:
-                name: Run e2e test serverless offline
-                command: yarn e2eTest:local
+                name: Run e2e test local for js
+                command: yarn e2eTest:local:js
+            - run:
+                name: Run e2e test local for ts
+                command: yarn e2eTest:local:ts
 workflows:
     build-and-test:
       jobs:

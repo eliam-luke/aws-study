@@ -6,11 +6,14 @@
   "author": "woshizhuyang <eliam.luke@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "staticAnalysis:Js": "npx eslint apl/**/*.js",
-    "unitTest:Js": "npx mocha 'test/**/*.spec.js' --reporter tap",
-    "unitTest:Ts": "npx mocha -r ts-node/register 'test/**/*.ts' --reporter tap",
-    "e2eStart:local": "serverless offline",
-    "e2eTest:local": "curl http://localhost:3000/dev/api/v1/hello-js"
+    "prebuild:ts": "npx tslint -c tslint.json -p tsconfig.json --fix && rm -rf dist/",
+    "build:ts": "npx tsc ./apl/**/*.ts",
+    "staticAnalysis:js": "npx eslint apl/**/*.js",
+    "unitTest:js": "npx mocha 'test/**/*.spec.js' --reporter tap",
+    "unitTest:ts": "npx mocha -r ts-node/register 'test/**/*.ts' --reporter tap",
+    "e2eStart:local": "serverless offline start",
+    "e2eTest:local:js": "curl http://localhost:3000/dev/api/v1/hello-js",
+    "e2eTest:local:ts": "curl http://localhost:3000/dev/api/v1/hello-ts"
   },
   "devDependencies": {
     "@types/chai": "^4.2.12",
@@ -22,14 +25,18 @@
     "eslint": "^7.6.0",
     "mocha": "^8.0.1",
     "serverless-offline": "^6.8.0",
+    "serverless-plugin-typescript": "^1.1.9",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@types/express": "^4.17.8",
     "aws-lambda": "^1.0.6",
     "aws-sdk": "^2.720.0",
+    "express": "^4.17.1",
     "moment": "^2.27.0",
     "moment-timezone": "^0.5.31",
+    "tslint": "^6.1.3",
     "typescript-json-serializer": "^2.3.2",
     "underscore.string": "^3.3.5",
     "uuid": "^8.2.0"
