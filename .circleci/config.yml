@@ -38,7 +38,7 @@ jobs:
                 command: yarn e2eStart:local
             - run:
                 name: Wating for serverless offline started 
-                command: sleep 15
+                command: sleep 30
             - run:
                 name: Run e2e test local for js
                 command: yarn e2eTest:local:js
