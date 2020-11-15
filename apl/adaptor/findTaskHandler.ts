@@ -1,6 +1,6 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import { DynamoTaskRepository } from '../../infrastructure/dataSource/DynamoTaskRepository'
-import { FindTask } from '../../application/service/FindTask'
+import { DynamoTaskRepository } from '../infrastructure/dataSource/DynamoTaskRepository'
+import { FindTask } from '../application/service/FindTask'
 
 export const handler: APIGatewayProxyHandler = async (event, _context) => {
 
