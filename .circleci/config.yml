@@ -17,10 +17,10 @@ jobs:
             #       - aws-study-
             - run:
                 name: Install serverless
-                command: sudo npm install -g serverless
+                command: sudo npm install --silent --no-progress -g serverless
             - run:
                 name: Install dependencies
-                command: yarn install
+                command: yarn install --silent --no-progress
             # - save_cache:
             #     name: Save Yarn Package Cache
             #     key: aws-study-{{ .Branch }}-{{ checksum "yarn.lock" }}
