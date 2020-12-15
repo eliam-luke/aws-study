@@ -4,7 +4,7 @@ const moment = require('moment-timezone'); // 時間タイムゾーンライブ�
 const crypto = require('crypto'); // 暗号化ライブラリ
 const VError = require('verror'); // エラー処理ライブラリ
 const AWS = require('aws-sdk'); // AWS-SDKライブラリ
-const documentClient = new AWS.DynamoDB.DocumentClient(); // dynamoDb操作モジュール
+const documentClient = require('./dynamodb'); // dynamoDb接続モジュール
 
 const TokenInfoRepository = require('../../domain/models/token/tokenInfoRepository');
 
