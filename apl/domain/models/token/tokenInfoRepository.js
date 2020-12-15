@@ -1,28 +1,32 @@
 'use strict';
+const Interface = require('es6-interface');
+const ITokenInfoRepository = require('./ITokenInfoRepository');
+const TokenInfo = require('./TokenInfo');
 
-class TokenInfoRepository{
+class TokenInfoRepository extends Interface(ITokenInfoRepository) {
     // コンストラクター
-    constructor(connection) {    
-        // DB接続インスタンス
-        this.connection = connection;
+    constructor() {
+        super();
     }
 
-    findAll(){
+    find(param) {
+        return TokenInfo;
     }
     
-    findeOne(token){
+    findeOne(param) {
+        return TokenInfo;
     }
 
-    cretate(tokenInfo){
-        return true;
+    cretate(param) {
+        return TokenInfo;
     }
 
-    update(tokenInfo){
-        return true;
+    update(param) {
+        return;
     }
 
-    delete(tokenInfo){
-        return true;
+    delete(param) {
+        return;
     }
 }
 

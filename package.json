@@ -28,6 +28,7 @@
   "dependencies": {
     "aws-lambda": "^1.0.6",
     "aws-sdk": "^2.720.0",
+    "es6-interface": "^3.1.4",
     "moment": "^2.27.0",
     "moment-timezone": "^0.5.31",
     "typescript-json-serializer": "^2.3.2",

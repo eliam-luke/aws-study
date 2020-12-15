@@ -4,11 +4,13 @@ const moment = require('moment-timezone'); // 時間タイムゾーンライブ�
 const crypto = require('crypto'); // 暗号化ライブラリ
 const VError = require('verror'); // エラー処理ライブラリ
 const AWS = require('aws-sdk'); // AWS-SDKライブラリ
-const documentClient = require('./dynamodb'); // dynamoDb接続モジュール
 
-const TokenInfoRepository = require('../../domain/models/token/tokenInfoRepository');
+const Interface = require('es6-interface');
+const TokenInfo = require('../../domain/models/token/TokenInfo');
+const ITokenInfoRepository = require('../../domain/models/token/ITokenInfoRepository');
+const TokenInfoRepository = require('../../domain/models/token/TokenInfoRepository');
 
-class DynamoDbTokenInfoRepository extends TokenInfoRepository {
+class DynamoDbTokenInfoRepository extends Interface(ITokenInfoRepository, TokenInfoRepository) {
     // コンストラクター
     constructor(documentClient) {
         super();
@@ -16,29 +18,31 @@ class DynamoDbTokenInfoRepository extends TokenInfoRepository {
         this.documentClient = documentClient;
     }
 
-    findAll(){
+    find(param) {
+        return new TokenInfo();
     }
     
-    findeOne(){
+    findeOne(param) {
+        return new TokenInfo();
     }
 
-    async cretate(tokenInfo){
+    async cretate(param){
         try {
             // データベースに書込み
-            const result =  await documentClient.put(tokenInfo).promise();
-            return result;
+            const result =  await documentClient.put(param).promise();
+            return new TokenInfo(result);
         } catch (error) {
             // エラー起こす
-            throw new VError(error, `dynamoDb.put error: ${tokenInfo.TableName}`);
+            throw new VError(error, `dynamoDb.put error: ${param.TableName}`);
         }
     }
 
-    update(){
-        return true;
+    update(param) {
+        return;
     }
 
-    delete(){
-        return true;
+    delete(param) {
+        return;
     }
 }
 
