@@ -6,9 +6,9 @@ const VError = require('verror'); // エラー処理ライブラリ
 const AWS = require('aws-sdk'); // AWS-SDKライブラリ
 
 const Interface = require('es6-interface');
-const TokenInfo = require('../../domain/models/token/TokenInfo');
+const TokenInfo = require('../../domain/models/token/tokenInfo');
 const ITokenInfoRepository = require('../../domain/models/token/ITokenInfoRepository');
-const TokenInfoRepository = require('../../domain/models/token/TokenInfoRepository');
+const TokenInfoRepository = require('../../domain/models/token/tokenInfoRepository');
 
 class DynamoDbTokenInfoRepository extends Interface(ITokenInfoRepository, TokenInfoRepository) {
     // コンストラクター
@@ -28,8 +28,12 @@ class DynamoDbTokenInfoRepository extends Interface(ITokenInfoRepository, TokenI
 
     async cretate(param){
         try {
+            const params = {
+                TableName: process.env.TOKEN_TABLE_NAME,
+                Item: param
+            };
             // データベースに書込み
-            const result =  await documentClient.put(param).promise();
+            const result =  await this.documentClient.put(params).promise();
             return new TokenInfo(result);
         } catch (error) {
             // エラー起こす

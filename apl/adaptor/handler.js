@@ -9,8 +9,8 @@ module.exports.hello = async (event, context) => {
     const uuid = userId.uuidV1();
     console.log(`uuidV1=${uuid}`);
   
-    const createTokenService = new CreateTokenService(event.body);
-    const tokenInfo = createTokenService.process();
+    const createTokenService = new CreateTokenService(event.body, event.queryStringParameters);
+    const tokenInfo = await createTokenService.process();
   
     return {
       statusCode: 200,

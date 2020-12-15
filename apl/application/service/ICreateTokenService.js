@@ -1,6 +1,6 @@
 'use strict';
 
-const TokenInfo = require('../../domain/models/token/TokenInfo');
+const TokenInfo = require('../../domain/models/token/tokenInfo');
 
 const ICreateTokenService = {
 

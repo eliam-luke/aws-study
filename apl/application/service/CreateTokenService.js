@@ -1,30 +1,29 @@
-const { use } = require("chai");
-const { Interface } = require("readline");
-
 'use strict';
 
+const Interface = require('es6-interface');
 const uuid = require('uuid'); // UUIDライブラリ
-const TokenInfo = require('../../domain/models/token/TokenInfo');
+const TokenInfo = require('../../domain/models/token/tokenInfo');
 const ICreateTokenService = require('./ICreateTokenService');
-const DynamoDbTokenInfoRepository = require('../../infrastructure/dataSource/DynamoDbTokenInfoRepository');
+const DynamoDbTokenInfoRepository = require('../../infrastructure/dataSource/dynamoDbTokenInfoRepository');
 const documentClient = require('../../infrastructure/dataSource/dynamodb'); // dynamoDb接続モジュール
 
 class CreateTokenService extends Interface(ICreateTokenService) {
     // コンストラクター
-    constructor(request) {
+    constructor(request, params) {
         super();
         this.request = request;
+        this.params = params;
     }
 
-    process = async function() {
+     async process() {
         try {
             var tokenInfo = new TokenInfo();
             tokenInfo.token = uuid.v4();
             tokenInfo.createdAt = new Date().getTime();
-            tokenInfo.scope = this.request.scope;
+            tokenInfo.scope = this.params.scope;
     
             const tokenInfoRepository = new DynamoDbTokenInfoRepository(documentClient);
-            const result = tokenInfoRepository.cretate(tokenInfo, tokenInfoRepository);
+            const result = await tokenInfoRepository.cretate(tokenInfo);
     
             return {
                 tokenInfo: result

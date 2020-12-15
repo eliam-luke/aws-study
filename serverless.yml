@@ -47,6 +47,7 @@ provider:
 # you can define service wide environment variables here
   environment:
     TASK_TABLE_NAME: TaskTable-${self:provider.stage}
+    TOKEN_TABLE_NAME: TokenTable-${self:provider.stage}
 
 # you can add packaging information here
 #package:

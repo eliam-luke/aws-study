@@ -1,7 +1,7 @@
 'use strict';
 const Interface = require('es6-interface');
 const ITokenInfoRepository = require('./ITokenInfoRepository');
-const TokenInfo = require('./TokenInfo');
+const TokenInfo = require('./tokenInfo');
 
 class TokenInfoRepository extends Interface(ITokenInfoRepository) {
     // コンストラクター

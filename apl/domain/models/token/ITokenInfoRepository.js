@@ -1,6 +1,6 @@
 'use strict';
 //const Interface = require('es6-interface');
-const TokenInfo = require('./TokenInfo');
+const TokenInfo = require('./tokenInfo');
 
 const ITokenInfoRepository = {
 

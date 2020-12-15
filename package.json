@@ -33,6 +33,7 @@
     "moment-timezone": "^0.5.31",
     "typescript-json-serializer": "^2.3.2",
     "underscore.string": "^3.3.5",
-    "uuid": "^8.2.0"
+    "uuid": "^8.2.0",
+    "verror": "^1.10.0"
   }
 }
