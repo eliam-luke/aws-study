@@ -20,4 +20,11 @@ describe("The handler function", function()  {
             body.message.should.be.equal('Go Serverless v1.0! Your function executed successfully!');
         });
     });
+
+    it("returns a statusCode", function() {
+        handler.health(undefined, undefined, function(error, response){
+            let statusCode = JSON.parse(response.statusCode);
+            statusCode.should.be.equal(200);
+        });
+    });
 });

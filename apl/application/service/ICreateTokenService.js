@@ -4,7 +4,7 @@ const TokenInfo = require('../../domain/models/token/tokenInfo');
 
 const ICreateTokenService = {
 
-    process: function() {
+    main: function() {
         return TokenInfo;
     }
 }

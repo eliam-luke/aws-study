@@ -12,7 +12,7 @@ const ITokenInfoRepository = {
         return TokenInfo;
     },
 
-    cretate: function(param) {
+    create: function(param) {
         return TokenInfo;
     },
 

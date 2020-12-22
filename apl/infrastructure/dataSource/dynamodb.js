@@ -10,7 +10,7 @@ if (process.env.IS_OFFLINE) {
     region: 'localhost',
     accessKeyId: 'accessKeyId', // ダミーaccessKeyId
     secretAccessKey: 'secretAccessKey', // ダミーsecretAccessKey
-    endpoint: 'http://10.197.216.92:8000'
+    endpoint: 'http://localhost:8000'
   };
 }
 

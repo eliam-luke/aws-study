@@ -46,8 +46,10 @@ provider:
 
 # you can define service wide environment variables here
   environment:
+    DEV_NAME: ${self:provider.stage}
     TASK_TABLE_NAME: TaskTable-${self:provider.stage}
     TOKEN_TABLE_NAME: TokenTable-${self:provider.stage}
+    TOKEN_TIMEOUT: 3600 # sec
 
 # you can add packaging information here
 #package:
@@ -65,6 +67,18 @@ functions:
       - http:
           method: get
           path: /api/v1/hello-js
+  healthCheck:
+    handler: apl/adaptor/handler.health
+    events:
+      - http:
+          method: get
+          path: /api/v1/health-check
+  accessToken:
+    handler: apl/adaptor/handler.accessToken
+    events:
+      - http:
+          method: get
+          path: /api/v1/access-token
   hello-ts:
     handler: apl/adaptor/helloHandler.handler
     events:
